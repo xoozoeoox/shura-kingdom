@@ -5,6 +5,7 @@ import { fileURLToPath } from "node:url";
 const outputDirectory = fileURLToPath(new URL("../out/", import.meta.url));
 const basePath = (process.env.NEXT_PUBLIC_BASE_PATH ?? "").replace(/\/$/, "");
 const textExtensions = new Set([".html", ".js", ".css", ".json", ".txt"]);
+const sitePath = /(["'`])\/(?=(?:basic|gacha|work|adventure|tavern|market|bestiary)(?:[\/"'`]|\\?["'`])|(?:shura-|kingdom-|system-icons|gacha-icons|roulette-|miru-|lilian-|nova-|elin-|hilda-|hostess-|favicon\.))/g;
 
 async function rewrite(directory) {
   for (const entry of await readdir(directory, { withFileTypes: true })) {
@@ -15,8 +16,8 @@ async function rewrite(directory) {
     }
     if (!basePath || !textExtensions.has(entry.name.slice(entry.name.lastIndexOf(".")))) continue;
     const source = await readFile(file, "utf8");
-    const quotedPathsPrefixed = source.replace(/(["'`])\/(?=[A-Za-z0-9_.-]|\\?["'`])/g, (match, quote, offset) => {
-      return source.startsWith(`${quote}${basePath}/`, offset) ? match : `${quote}${basePath}/`;
+    const quotedPathsPrefixed = source.replace(sitePath, (match, quote, offset) => {
+      return source.startsWith(`${quote}${basePath}`, offset) ? match : `${quote}${basePath}/`;
     });
     const prefixed = quotedPathsPrefixed.replace(/url\(\/(?=[A-Za-z0-9_.-])/g, (match, offset) => {
       return quotedPathsPrefixed.startsWith(`url(${basePath}/`, offset) ? match : `url(${basePath}/`;
