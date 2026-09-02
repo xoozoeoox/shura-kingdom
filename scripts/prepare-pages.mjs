@@ -15,7 +15,7 @@ async function rewrite(directory) {
     }
     if (!basePath || !textExtensions.has(entry.name.slice(entry.name.lastIndexOf(".")))) continue;
     const source = await readFile(file, "utf8");
-    const quotedPathsPrefixed = source.replace(/(["'])\/(?=[A-Za-z0-9_.-])/g, (match, quote, offset) => {
+    const quotedPathsPrefixed = source.replace(/(["'`])\/(?=[A-Za-z0-9_.-]|\\?["'`])/g, (match, quote, offset) => {
       return source.startsWith(`${quote}${basePath}/`, offset) ? match : `${quote}${basePath}/`;
     });
     const prefixed = quotedPathsPrefixed.replace(/url\(\/(?=[A-Za-z0-9_.-])/g, (match, offset) => {
