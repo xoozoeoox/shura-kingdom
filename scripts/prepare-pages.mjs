@@ -5,7 +5,7 @@ import { fileURLToPath } from "node:url";
 const outputDirectory = fileURLToPath(new URL("../out/", import.meta.url));
 const basePath = (process.env.NEXT_PUBLIC_BASE_PATH ?? "").replace(/\/$/, "");
 const textExtensions = new Set([".html", ".js", ".css", ".json", ".txt"]);
-const sitePath = /(["'`])\/(?=(?:basic|gacha|work|adventure|tavern|market|bestiary)(?:[\/"'`]|\\?["'`])|(?:shura-|kingdom-|system-icons|gacha-icons|roulette-|miru-|lilian-|nova-|elin-|hilda-|hostess-|favicon\.))/g;
+const sitePath = /(["'`])\/(?=(?:basic|gacha|work|adventure|tavern|market|bestiary)(?:[\/"'`]|\\?["'`])|(?:shura-|kingdom-|system-icons|gacha-icons|roulette-|tavern-|miru-|lilian-|nova-|elin-|hilda-|hostess-|favicon\.))/g;
 
 async function rewrite(directory) {
   for (const entry of await readdir(directory, { withFileTypes: true })) {
