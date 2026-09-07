@@ -60,9 +60,9 @@ export default function TavernPage() {
         <section className="drink-section" data-reveal aria-labelledby="drink-title">
           <div className="drink-copy"><span>02　DRINK SYSTEM</span><h2 id="drink-title">喝酒</h2><p>小灼酒館是修羅國最受歡迎的冒險者聚集地。本地冒險者每天的第一杯由酒館請客——畢竟把人灌醉以前，總得先展現一點誠意。</p></div>
           <div className="drink-story">
-            <p><strong>每日首杯免費</strong>，每杯可恢復 <b>10～50 AP</b>。酒意會讓你暫時無法工作 <em>1 小時</em>，而且喝得越多，休息時間就會繼續累計。</p>
+            <p><strong>每日首杯免費</strong>，每杯可恢復 <b>30～80 AP</b>。酒意會讓你暫時無法工作 <em>1 小時</em>，而且喝得越多，休息時間就會繼續累計。</p>
             <p>還想再喝？從第二杯開始，每杯收取 <b>100 修羅幣</b>。每次端酒來的小姐姐，都會因為你的捧場增加 <em>1 點好感度</em>。</p>
-            <div className="drink-ledger"><span>FIRST CUP　FREE</span><span>RECOVER　10～50 AP</span><span>NEXT CUP　100 COIN</span><span>AFFECTION　+1</span></div>
+            <div className="drink-ledger"><span>FIRST CUP　FREE</span><span>RECOVER　30～80 AP</span><span>NEXT CUP　100 COIN</span><span>AFFECTION　+1</span></div>
           </div>
         </section>
 

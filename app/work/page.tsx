@@ -19,7 +19,7 @@ const commonJobs: Job[] = [
 const rankJobs: Job[] = [
   { name: "城內站崗", energy: 60, hours: 8, coin: "90～160", role: "大大、巨巨、碩碩", exp: 25 },
   { name: "街道巡邏", energy: 50, hours: 8, coin: "100～140", role: "大大、巨巨、碩碩", exp: 25 },
-  { name: "王國行政", energy: 120, hours: 8, coin: "200～260", role: "巨巨、碩碩", exp: 25 },
+  { name: "王國行政", energy: 70, hours: 8, coin: "200～260", role: "巨巨、碩碩", exp: 25 },
   { name: "皇室委託", energy: 150, hours: 8, coin: "420～520", role: "碩碩", exp: 80 },
   { name: "貴族巡察", energy: 150, hours: 8, coin: "380～560", role: "碩碩", exp: 80 },
 ];
