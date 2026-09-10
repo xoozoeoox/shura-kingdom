@@ -72,6 +72,11 @@ export default function BasicSystemsPage() {
         </div>
       </section>
 
+      <section className="item-archive-portal" data-reveal aria-labelledby="item-archive-portal-title">
+        <div><span>CHAPTER I-A　／　KINGDOM ITEM ARCHIVE</span><h2 id="item-archive-portal-title">王國物品圖鑑</h2><p>收錄王國現有的體力、療傷、探險、掉落、禮物與特殊物品，以及系統登記的實際效果。</p></div>
+        <a href="/items">開啟物品圖鑑　→</a>
+      </section>
+
       <footer><span>修羅國系統導覽　／　基礎系統</span><a href="/">返回系統首頁</a></footer>
     </main>
   );

@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
 
-const routes = ["", "basic", "gacha", "work", "adventure", "tavern", "market", "bestiary"];
+const routes = ["", "basic", "items", "gacha", "work", "adventure", "tavern", "market", "bestiary"];
 
 test("exports every route as static HTML", async () => {
   for (const route of routes) {
