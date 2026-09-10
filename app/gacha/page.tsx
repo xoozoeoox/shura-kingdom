@@ -1,10 +1,10 @@
 import ScrollReveal from "../ScrollReveal";
 
 const prizes = [
-  { number: "01", title: "修羅國幣", text: "你可以血本無歸，或是中個大獎。", symbol: "◈" },
-  { number: "02", title: "治療物", text: "喜歡探險的你，一定無法忍受被迫休養的，對吧？", symbol: "✚" },
-  { number: "03", title: "體力罐", text: "社畜必備佳品！工作只有做一次跟無限次！", symbol: "⚗" },
-  { number: "04", title: "特別身分組", text: "抽中後即可獲得玩樂身分，或解鎖特殊的限時工作。", symbol: "♛" },
+  { number: "01", title: "修羅國幣 ｜ 24.99%", text: "你可以血本無歸，或是中個大獎。", symbol: "◈" },
+  { number: "02", title: "治療物 ｜ 22.5%", text: "喜歡探險的你，一定無法忍受被迫休養的，對吧？", symbol: "✚" },
+  { number: "03", title: "體力罐 ｜ 47.5%", text: "社畜必備佳品！工作只有做一次跟無限次！", symbol: "⚗" },
+  { number: "04", title: "特別身分組 ｜ 5.01%", text: "抽中後即可獲得玩樂身分，或解鎖特殊的限時工作。", symbol: "♛" },
 ];
 
 export const metadata = {
