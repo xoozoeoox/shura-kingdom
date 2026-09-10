@@ -21,6 +21,7 @@ const profiles = {
       "她的聲音軟綿綿的，語氣天真，有時會帶點撒嬌的意味。",
     ],
     finalEvent: "戀愛事件『米露摸摸』開啟",
+    finalEffect: "每天第一次進入酒館找米露時，可恢復 300 AP。",
   },
   lilian: {
     number: "02", name: "莉莉安", romanized: "Lilian", age: "16歲｜小灼酒館的老闆娘之女",
@@ -35,6 +36,7 @@ const profiles = {
       "她的身上總混雜著淡淡的皂香（表示乾淨）和香草粉的氣味（表示她偶爾會幫媽媽做糕點），這種溫柔的香氣讓人感到心曠神怡。",
     ],
     finalEvent: "戀愛事件『打聽消息』開啟",
+    finalEffect: "每天第一次來找莉莉安說話或送禮後，當日第一次工作獲得的修羅幣額外 +500%；效果只限當日使用，不能疊加。",
   },
   nova: {
     number: "03", name: "諾雅", romanized: "Nova", age: "25歲｜對古蹟、冒險故事很有興趣的成熟大姊姊",
@@ -48,6 +50,7 @@ const profiles = {
       "身上總混雜著淡淡的陳舊紙張氣味、墨水味和溫暖的藥草茶香。身邊總離不開一本厚重的、封面磨損的筆記本和一堆凌亂的草圖和地圖。她總是隨身攜帶一個保溫杯（裡面裝著藥草茶）和一盒潤喉糖。",
     ],
     finalEvent: "戀愛事件『冒險故事』開啟",
+    finalEffect: "每天第一次來找諾雅說話或送禮後，下一次探險可獲得額外 200% EXP 加成。",
   },
   elin: {
     number: "04", name: "艾琳", romanized: "Elin", age: "24歲｜對所有冒險者都溫柔婉約的女性",
@@ -62,6 +65,7 @@ const profiles = {
       "因為年少結婚，歲月尚未在她的臉上留下痕跡；但她那源自心底的母性光輝，使她成為這個世界中不可或缺的存在。她是許多年輕冒險者嚮往和尊敬的女性，也是這個酒館裡最溫暖的港灣。",
     ],
     finalEvent: "戀愛事件『家庭溫暖』開啟",
+    finalEffect: "今日下一次探險的 AP 消耗與返還減半；戰敗時探險仍會結束，但不會進入療傷冷卻。",
   },
   hilda: {
     number: "05", name: "希爾妲", romanized: "Hilda", age: "25歲｜冰雪一般的神祕女性・鄰國傭兵團前副團長",
@@ -76,6 +80,7 @@ const profiles = {
       "她是這座溫馨小酒館裡的「安全感」來源，也是最迷人的「冰之利刃」。儘管她高冷得讓人難以接近，但酒館裡的人都知道，只要有希爾妲坐在那個角落，再兇悍的流氓也不敢在此鬧事。",
     ],
     finalEvent: "戀愛事件『絕對武力』開啟",
+    finalEffect: "下一次擊敗怪物時，該次獲得經驗值 ×1000；效果於該次戰鬥結算後立即消失，且不可跨日保留。",
   },
 };
 
@@ -91,10 +96,10 @@ function PixelHeart({ color }: { color: string }) {
   );
 }
 
-function AffectionText({ text }: { text: string }) {
+function AffectionText({ text, effect }: { text: string; effect?: string }) {
   const match = text.match(/^(.*?)(『.+?』)(.*)$/);
   if (!match) return <>{text}</>;
-  return <>{match[1]}<span className="romance-event-title">{match[2]}</span>{match[3]}</>;
+  return <>{match[1]}<span className={`romance-event-title${effect ? " item-name has-item-tooltip" : ""}`} data-tooltip={effect} tabIndex={effect ? 0 : undefined} aria-label={effect ? `${match[2]}：${effect}` : undefined}>{match[2]}</span>{match[3]}</>;
 }
 
 export default function TavernExperience({ mode }: { mode: "scenes" | "hostesses" }) {
@@ -192,7 +197,7 @@ export default function TavernExperience({ mode }: { mode: "scenes" | "hostesses
               </div>
               <div className="affection-list" aria-label={`${profile.name}好感度事件`}>
                 {[...sharedMilestones, { color: "#F28B27", value: "4500", text: profile.finalEvent }].map((milestone, index) => (
-                  <div className="affection-event" style={{ animationDelay: `${(activeProfile === "hilda" ? 2.75 : 1) + index * 0.2}s` }} key={milestone.value}><PixelHeart color={milestone.color} /><strong>{milestone.value} 好感度事件</strong><p><AffectionText text={milestone.text} /></p></div>
+                  <div className="affection-event" style={{ animationDelay: `${(activeProfile === "hilda" ? 2.75 : 1) + index * 0.2}s` }} key={milestone.value}><PixelHeart color={milestone.color} /><strong>{milestone.value} 好感度事件</strong><p><AffectionText text={milestone.text} effect={milestone.value === "4500" ? profile.finalEffect : undefined} /></p></div>
                 ))}
               </div>
             </div>

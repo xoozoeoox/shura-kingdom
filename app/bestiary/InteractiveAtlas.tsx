@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import { monstersByRegion } from './monsters';
 import type { Monster } from './monsters';
 import MonsterImageDialog from './MonsterImageDialog';
-import { PAJAMAS_DESCRIPTION } from '../adventure/items';
+import { DROP_DESCRIPTIONS } from '../adventure/items';
 import './atlas.css';
 type Region = { id:string; name:string; side:'left'|'right'; y:number; description?:string };
 const regions:Region[] = [
@@ -66,7 +66,7 @@ return <div ref={root} className="interactive-atlas" data-dock={dock}>
     </button>
     <div><small>{monster.code}</small><h3>{monster.name}</h3>
       <div className="interactive-monster-stats"><strong className={monster.level === 11 ? 'level-boss' : undefined}>Lv.{monster.level}</strong><span>經驗值 <b>{monster.exp}</b></span></div>
-      {monster.drop && <p className="monster-drop">掉落物　{monster.drop === '山賊宏翰的睡衣' ? <strong className="item-name has-item-tooltip" data-tooltip={PAJAMAS_DESCRIPTION} tabIndex={0} aria-label={`${monster.drop}：${PAJAMAS_DESCRIPTION}`}>［{monster.drop}］</strong> : <strong className="item-name">［{monster.drop}］</strong>}</p>}
+      {monster.drop && <p className="monster-drop">掉落物　<strong className="item-name has-item-tooltip" data-tooltip={DROP_DESCRIPTIONS[monster.drop]} tabIndex={0} aria-label={`${monster.drop}：${DROP_DESCRIPTIONS[monster.drop]}`}>［{monster.drop}］</strong></p>}
     </div>
   </article>
 )) : <p className="atlas-pending">此地區的怪物資料尚待編纂。</p>}</section>}

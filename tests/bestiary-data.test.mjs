@@ -53,17 +53,31 @@ test('every monster has its own shipped PNG asset', () => {
   }
 });
 
-test('only the pajamas use their tooltip and Lv.11 has a red level style', () => {
+test('every listed monster drop has a tooltip and Lv.11 has a red level style', async () => {
   const component = readFileSync(new URL('../app/bestiary/InteractiveAtlas.tsx', import.meta.url), 'utf8');
   const css = readFileSync(new URL('../app/bestiary/atlas.css', import.meta.url), 'utf8');
-  assert.match(component, /monster\.drop === '山賊宏翰的睡衣'/);
+  const itemSource = readFileSync(new URL('../app/adventure/items.ts', import.meta.url), 'utf8');
+  const itemCompiled = ts.transpileModule(itemSource, { compilerOptions: { module: ts.ModuleKind.ESNext } }).outputText;
+  const { DROP_DESCRIPTIONS } = await import(`data:text/javascript;base64,${Buffer.from(itemCompiled).toString('base64')}`);
+  for (const monster of Object.values(monstersByRegion).flat()) {
+    if (monster.drop) assert.ok(DROP_DESCRIPTIONS[monster.drop], `Missing tooltip: ${monster.drop}`);
+  }
+  assert.match(component, /DROP_DESCRIPTIONS\[monster\.drop\]/);
   assert.match(component, /monster\.level === 11 \? 'level-boss'/);
   assert.match(css, /\.level-boss\{color:#ff646b\}/);
   assert.match(css, /sprite-gargoyle-small\{transform:scale\(\.65\)/);
 });
 
 test('adventure and bestiary reuse the same pajamas description', () => {
-  for (const file of ['adventure/page.tsx', 'bestiary/InteractiveAtlas.tsx']) {
-    assert.match(readFileSync(new URL(`../app/${file}`, import.meta.url), 'utf8'), /import \{ PAJAMAS_DESCRIPTION \}/);
+  assert.match(readFileSync(new URL('../app/adventure/page.tsx', import.meta.url), 'utf8'), /import \{ PAJAMAS_DESCRIPTION \}/);
+  assert.match(readFileSync(new URL('../app/bestiary/InteractiveAtlas.tsx', import.meta.url), 'utf8'), /import \{ DROP_DESCRIPTIONS \}/);
+});
+
+test('all five romance events expose their documented effects as tooltips', () => {
+  const component = readFileSync(new URL('../app/tavern/TavernExperience.tsx', import.meta.url), 'utf8');
+  for (const effect of ['恢復 300 AP', '修羅幣額外 +500%', '額外 200% EXP', 'AP 消耗與返還減半', '經驗值 ×1000']) {
+    assert.match(component, new RegExp(effect.replace(/[+]/g, '\\+')));
   }
+  assert.match(component, /profile\.finalEffect/);
+  assert.match(component, /has-item-tooltip/);
 });
