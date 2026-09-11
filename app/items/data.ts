@@ -58,16 +58,16 @@ export const itemCategories: ItemCategory[] = [
     id: "drops", number: "04", code: "MONSTER DROPS", title: "怪物掉落",
     note: "由城外特定怪物掉落的收藏品與禮物。",
     items: [
-      { code: "SnakeFlower", name: "蛇之花", effect: "梅杜莎族花，與梅杜莎的恐怖外表不同，長得相當甜美漂亮。" },
-      { code: "MermaidScale", name: "人魚鱗片", effect: "人魚身上最漂亮的一塊鱗片。" },
-      { code: "ZombieCross", name: "殭屍修女的十字架", effect: "成為殭屍的修女死前也堅持配戴的十字架，上頭似乎有現在仍無法解析的文字。" },
-      { code: "LichGlasses", name: "尼特巫妖的陳舊眼鏡", effect: "據傳巫妖的眼鏡有能夠看透伴侶的數據能力。" },
-      { code: "HeroTear", name: "英魂之淚", effect: "為無法成為英魂的冒險者流的淚水。是固體。" },
+      { code: "SnakeFlower", name: "蛇之花", effect: "梅杜莎族花，與梅杜莎的恐怖外表不同，長得相當甜美漂亮。據說是某些藥水的藥材之一，收集難度較高，藥水鋪長期收集中。" },
+      { code: "MermaidScale", name: "人魚鱗片", effect: "人魚身上最漂亮的一塊鱗片。據說隨身攜帶，能給予人一點點面對困難的勇氣。" },
+      { code: "ZombieCross", name: "殭屍修女的十字架", effect: "上面刻著無法辨讀的文字，每枚十字架的磨損程度也各不相同；送給喜歡研究古老事物的人，應該會很開心。" },
+      { code: "LichGlasses", name: "尼特巫妖的陳舊眼鏡", effect: "據傳巫妖的眼鏡有能夠看透伴侶數據的能力，因此也有冒險者蒐集後製作成定情物，送給自己的愛人。" },
+      { code: "HeroTear", name: "英魂之淚", effect: "冤魂消逝前留下的最後遺贈品，是凝結成固體的淚水。傭兵之間會把它當作幸運物，贈送給其他同袍。" },
     ],
   },
   {
-    id: "general", number: "05", code: "GIFTS & MATERIALS", title: "禮物／一般物品",
-    note: "中央市集可見的合成素材，以及能送給酒館小姐姐的完整物品。",
+    id: "general", number: "05", code: "SYNTHESIS ITEMS", title: "合成物品",
+    note: "每組依序列出合成素材一、合成素材二與完成品。",
     items: [
       { code: "PuffWrap", name: "酥皮紙包", effect: "烘得酥脆的派皮，聞起來帶著淡淡奶香，是製作派類甜點不可少的底胚。" },
       { code: "BerryJam", name: "莓香果醬罐", effect: "以新鮮草莓熬成果餡，酸甜香氣濃郁，光是打開就讓人想偷吃一口。" },

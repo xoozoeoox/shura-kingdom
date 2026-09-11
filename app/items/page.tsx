@@ -34,11 +34,11 @@ export default function ItemArchivePage() {
               <h2 id={`${category.id}-title`}>{category.title}</h2>
               <p>{category.note}</p>
             </header>
-            <div className={`item-list-layout${category.id === "stamina" ? " stamina-list-layout" : ""}`}>
+            <div className={`item-list-layout item-layout-${category.id}`}>
               {category.id === "stamina" ? <>
                 <ItemList title="藥水、精華與靈藥" code="POTIONS & ELIXIRS" category={category.id} items={category.items.filter((item) => !isCharacterGift(item.code))} />
-                <ItemList title="小姊姊的贈禮" code="CHARACTER GIFTS" category={category.id} items={category.items.filter((item) => isCharacterGift(item.code))} />
-              </> : <ItemList category={category.id} items={category.items} />}
+                <ItemList title="小姊姊的贈禮" code="CHARACTER GIFTS" category={category.id} items={category.items.filter((item) => isCharacterGift(item.code))} tooltip />
+              </> : category.id === "general" ? <SynthesisList items={category.items} /> : <ItemList category={category.id} items={category.items} expanded />}
             </div>
           </section>
         ))}
@@ -49,17 +49,28 @@ export default function ItemArchivePage() {
   );
 }
 
-function ItemList({ items, category, title, code }: { items: (typeof itemCategories)[number]["items"]; category: string; title?: string; code?: string }) {
+function ItemList({ items, category, title, code, tooltip = false, expanded = false }: { items: (typeof itemCategories)[number]["items"]; category: string; title?: string; code?: string; tooltip?: boolean; expanded?: boolean }) {
   return <div className="archive-item-list">
     {title && <header className="archive-list-title"><b>{title}</b><small>{code}</small></header>}
     {items.map((item, index) => {
-      const tooltip = item.description ?? item.effect;
       const isRecovery = /^AP\+\d+$/.test(item.effect);
-      return <article className="archive-item-row" data-tooltip={tooltip} tabIndex={0} data-reveal style={{ transitionDelay: `${(index % 4) * 40}ms` }} key={item.code}>
+      return <article className={`archive-item-row${tooltip ? " has-archive-tooltip" : ""}${expanded ? " expanded-item-row" : ""}`} data-tooltip={tooltip ? (item.description ?? item.effect) : undefined} tabIndex={tooltip ? 0 : undefined} data-reveal style={{ transitionDelay: `${(index % 4) * 40}ms` }} key={item.code}>
         <span className="archive-item-icon"><ItemIcon code={item.code} category={category} /></span>
         <div className="archive-item-copy"><small>{item.code}</small><h3>{item.name}</h3></div>
-        <div className="archive-item-effect"><small>{isRecovery ? "RECOVERY" : "DETAIL"}</small><strong>{isRecovery ? item.effect : "查看"}</strong></div>
+        <div className="archive-item-effect"><small>{isRecovery ? "RECOVERY" : "DETAIL"}</small><strong>{item.effect}</strong></div>
       </article>;
     })}
   </div>;
+}
+
+const synthesisGroups = [
+  ["PuffWrap", "BerryJam", "StrawberryPie"], ["SoftVelvet", "BearButton", "TeddyBear"],
+  ["ShidoLeaf", "ShidoRoot", "ShidoHerb"], ["WhitePepper", "HotChili", "RawChili"],
+  ["AdvNews", "SpecialPage", "AdvMag"], ["SwordBase", "SwordHilt", "Longsword"],
+  ["AgedGrapeJuice", "WaxSealedBottle", "Wine"],
+];
+
+function SynthesisList({ items }: { items: (typeof itemCategories)[number]["items"] }) {
+  const byCode = new Map(items.map((item) => [item.code, item]));
+  return <div className="synthesis-list"><header className="synthesis-labels"><span>合成素材 1</span><span>合成素材 2</span><span>成品</span></header>{synthesisGroups.map((group, row) => <div className="synthesis-row" key={group[2]}>{group.map((code, column) => { const item = byCode.get(code)!; return <article className={`synthesis-item${column === 2 ? " synthesis-result" : ""}`} data-reveal key={code}><span className="archive-item-icon"><ItemIcon code={item.code} category="general" /></span><div><small>{item.code}</small><h3>{item.name}</h3><p>{item.effect}</p></div></article>; })}</div>)}</div>;
 }
