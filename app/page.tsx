@@ -39,8 +39,8 @@ export default function Home() {
           <div className="level-flag">KING　LV. MAX</div>
           <img className="hero-king pixel-art" src="shura-king-16bit.png" alt="戴著王冠與紅色斗篷的修羅國國王行走圖" />
           <nav className="home-archive-shortcuts" aria-label="圖鑑捷徑">
-            <a href="items/"><span>ITEM</span><b>物品圖鑑</b><i>▶</i></a>
-            <a href="bestiary/"><span>MONSTER</span><b>怪物圖鑑</b><i>▶</i></a>
+            <a className="system-button available home-archive-button" href="items/"><span>ITEM</span><b>物品圖鑑</b><i>▶</i></a>
+            <a className="system-button available home-archive-button" href="bestiary/"><span>MONSTER</span><b>怪物圖鑑</b><i>▶</i></a>
           </nav>
         </div>
       </section>
