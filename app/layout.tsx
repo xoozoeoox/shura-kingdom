@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import ClientReady from "./ClientReady";
+import BackToTop from "./BackToTop";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH?.replace(/\/$/, "") ?? "";
 
@@ -11,5 +12,5 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="zh-Hant"><head><base href={`${basePath}/`} /></head><body><ClientReady />{children}</body></html>;
+  return <html lang="zh-Hant"><head><base href={`${basePath}/`} /></head><body><ClientReady />{children}<BackToTop /></body></html>;
 }
