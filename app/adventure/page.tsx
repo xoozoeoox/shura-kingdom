@@ -101,7 +101,7 @@ export default function AdventurePage() {
               <h3>北城門近郊</h3>
               <p>首批五種怪物資料已完成編纂。</p>
             </div>
-            <a href="/bestiary">開啟怪物圖鑑　▶</a>
+            <a className="archive-entry-button" href="/bestiary">開啟怪物圖鑑　▶</a>
           </div>
         </section>
       </section>

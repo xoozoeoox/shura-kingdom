@@ -359,3 +359,28 @@ body.modal-open { overflow:hidden; }
 }
 .back-to-top:active { transform:translate(2px,2px); box-shadow:2px 2px 0 rgba(4,8,20,.82),inset 0 0 0 2px #46659a; }
 @media (max-width:900px) { .back-to-top { display:none; } }
+
+/* Both archive entry points intentionally share the exact same button design. */
+.item-archive-portal .archive-entry-button,
+.monster-entry-card .archive-entry-button {
+  flex:0 0 auto;
+  padding:14px 19px;
+  color:#17264d;
+  font-weight:900;
+  white-space:nowrap;
+  background:linear-gradient(#fff3c8,#d5b363);
+  border:3px solid #f1cb6b;
+  outline:2px solid #704a13;
+  box-shadow:4px 4px 0 #070c20;
+}
+.item-archive-portal .archive-entry-button:hover,
+.item-archive-portal .archive-entry-button:focus-visible,
+.monster-entry-card .archive-entry-button:hover,
+.monster-entry-card .archive-entry-button:focus-visible {
+  color:#17264d;
+  background:linear-gradient(#fff8dc,#e8c86e);
+  outline:2px solid #fff1b5;
+  outline-offset:2px;
+  filter:brightness(1.12);
+  transform:translate(1px,1px);
+}
