@@ -25,22 +25,38 @@ export default function MarketPage() {
       </section>
 
       <section className="market-content">
+        <section className="market-scene-section" aria-labelledby="market-scenes-title">
+          <div className="market-section-title"><span>01　TIME OF DAY</span><h2 id="market-scenes-title">此刻的市集</h2><p>白天、傍晚與夜晚，各有不同的市集景色。</p></div>
+          <div className="tavern-scenes market-scenes" aria-label="市集時段背景">
+            {[
+              ["DAY", "白天市集", "/market-day.png"],
+              ["DUSK", "傍晚市集", "/market-evening.png"],
+              ["NIGHT", "夜晚市集", "/market-night.png"],
+            ].map(([period, title, src]) => (
+              <div className={`tavern-scene scene-${period.toLowerCase()}`} key={period}>
+                <img src={src} alt={`${title}背景`} draggable="false" />
+                <span>{period}</span><strong>{title}</strong>
+              </div>
+            ))}
+          </div>
+        </section>
+
         <section className="market-shop-section" aria-labelledby="central-shop-title">
-          <div className="market-section-title"><span>01　CENTRAL SHOP</span><h2 id="central-shop-title">中央商店</h2><p>每天更新三輪商品；特殊身分組也可能改變出現的品項。</p></div>
+          <div className="market-section-title"><span>02　CENTRAL SHOP</span><h2 id="central-shop-title">中央商店</h2><p>每天更新三輪商品；特殊身分組也可能改變出現的品項。</p></div>
           <div className="market-shop-copy" data-reveal>
             <p>每天會更新三次商品，每個時段開始時會有新一輪的商品販售，並且依據你是否擁有特殊身分組，而有出現不同品項的機會哦！</p>
             <p>中央商店會販售六種不同物品，除了體力罐、治療物這些常見物品之外，如果想討小姐姐歡心，不妨留意那些特殊物品，很可能就會合成出小姐姐喜歡的東西……！</p>
           </div>
           <div className="market-time-table-wrap" data-reveal>
             <table className="market-time-table">
-              <thead><tr><th>商品時段</th></tr></thead>
-              <tbody>{shopTimes.map((time, index) => <tr key={time}><th><span>{String(index + 1).padStart(2, "0")}</span>{time}</th></tr>)}</tbody>
+              <thead><tr><th colSpan={3}>商品進貨時段</th></tr></thead>
+              <tbody><tr>{shopTimes.map((time, index) => <th key={time}><span>{String(index + 1).padStart(2, "0")}</span>{time}</th>)}</tr></tbody>
             </table>
           </div>
         </section>
 
         <section className="trade-section" aria-labelledby="trade-title">
-          <div className="market-section-title"><span>02　TRADE MARKET</span><h2 id="trade-title">交易市場</h2><p>背包太滿，或想用其他方式取得好感度物品？來和其他國民交易。</p></div>
+          <div className="market-section-title"><span>03　TRADE MARKET</span><h2 id="trade-title">交易市場</h2><p>背包太滿，或想用其他方式取得好感度物品？來和其他國民交易。</p></div>
           <p className="trade-intro" data-reveal>背包東西太多？想要用別種方式取得小姐姐的好感度物品？那就來交易市場交易吧！</p>
           <div className="trade-copy-grid">
             <article className="trade-copy" data-reveal>
