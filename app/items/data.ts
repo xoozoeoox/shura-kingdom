@@ -51,7 +51,7 @@ export const itemCategories: ItemCategory[] = [
     items: [
       { code: "BanditToken", name: "山賊宏翰的憑證", effect: "冒險遇到《強盜團事件》時可免疫偷錢一次，隨機消耗 1 個。", description: "為什麼前老闆的身分證在這裡？" },
       { code: "BanditPajamas", name: "山賊宏翰的睡衣", effect: "冒險遇到《強盜團事件》時可免疫偷錢一次；若同時持有睡衣與憑證，優先消耗睡衣。", description: "山賊宏翰珍藏多年的白色睡衣，有些髒污與破損。" },
-      { code: "AntiTeleCompass", name: "反傳送指南針", effect: "冒險遇到《傳送陷阱》時可免除傳送一次，隨機消耗 1 個並重新開始冒險事件。", description: "迷路了也用不了的爛東西，但關鍵時刻能救你一命。" },
+      { code: "AntiTeleCompass", name: "反傳送指南針", effect: "遇到《傳送陷阱》時會自動消耗 1 個，使你免除傳送並重新選擇地圖；本次探險的增益效果會繼續保留，但已消耗的 AP 不會返還。", description: "迷路了也用不了的爛東西，但關鍵時刻能救你一命。" },
     ],
   },
   {

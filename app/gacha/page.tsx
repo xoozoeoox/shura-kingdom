@@ -28,6 +28,12 @@ export default function GachaPage() {
         </div>
         <blockquote>小賭怡情，大賭傷心，巨賭敗家，<strong>一擲千金。</strong></blockquote>
         <p className="gacha-odds-copy">轉盤落定以前，人人都有一夕致富的可能。落定以後就不一定了。</p>
+        <div className="adventure-cost gacha-cost" aria-label="抽卡價格">
+          <span>抽卡價格</span>
+          <strong>單抽　150</strong>
+          <strong>十抽　1,350</strong>
+          <small>SHURA COINS</small>
+        </div>
       </section>
 
       <section className="gacha-content">

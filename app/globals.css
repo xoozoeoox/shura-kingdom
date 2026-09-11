@@ -397,6 +397,12 @@ body.modal-open { overflow:hidden; }
   grid-template-columns:repeat(2,minmax(0,1fr));
   gap:14px;
   transform:translateX(-50%);
+  animation:home-archive-shortcuts-in .18s ease-out 1s both;
+}
+@keyframes home-archive-shortcuts-in {
+  from { opacity:0; visibility:hidden; }
+  1% { visibility:visible; }
+  to { opacity:1; visibility:visible; }
 }
 .home-archive-shortcuts a {
   min-width:0;
@@ -462,4 +468,13 @@ body.modal-open { overflow:hidden; }
   .home-archive-shortcuts a { padding:11px 9px; }
   .home-archive-shortcuts a span { display:none; }
   .home-archive-shortcuts a b { font-size:14px; }
+}
+
+.gacha-heading { position:relative; padding-right:330px; }
+.gacha-cost { right:34px; bottom:34px; min-width:245px; }
+.gacha-cost strong { margin:3px 0; font-size:18px; }
+.gacha-cost strong + strong { padding-top:4px; border-top:1px solid rgba(117,139,181,.45); }
+@media (max-width:760px) {
+  .gacha-heading { padding-right:22px; }
+  .gacha-cost { position:static; margin-top:22px; }
 }
