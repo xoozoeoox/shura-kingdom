@@ -49,13 +49,13 @@ export const itemCategories: ItemCategory[] = [
     id: "adventure", number: "03", code: "ADVENTURE SUPPORT", title: "探險輔助",
     note: "在特定探險事件中提供保護或重新選擇機會。",
     items: [
-      { code: "BanditToken", name: "山賊宏翰的憑證", effect: "冒險遇到《強盜團事件》時可免疫偷錢一次，隨機消耗 1 個。" },
-      { code: "BanditPajamas", name: "山賊宏翰的睡衣", effect: "山賊宏翰珍藏多年的睡衣，穿上後散發著一股連山賊都不想靠近的神祕氣息。冒險遇到《強盜團事件》時可免疫偷錢一次，隨機消耗 1 個；若同時有睡衣與憑證，優先消耗睡衣。" },
-      { code: "AntiTeleCompass", name: "反傳送指南針", effect: "冒險遇到《傳送陷阱》時可免除傳送一次，隨機消耗 1 個並重新開始冒險事件。" },
+      { code: "BanditToken", name: "山賊宏翰的憑證", effect: "冒險遇到《強盜團事件》時可免疫偷錢一次，隨機消耗 1 個。", description: "為什麼前老闆的身分證在這裡？" },
+      { code: "BanditPajamas", name: "山賊宏翰的睡衣", effect: "冒險遇到《強盜團事件》時可免疫偷錢一次；若同時持有睡衣與憑證，優先消耗睡衣。", description: "山賊宏翰珍藏多年的白色睡衣，有些髒污與破損。" },
+      { code: "AntiTeleCompass", name: "反傳送指南針", effect: "冒險遇到《傳送陷阱》時可免除傳送一次，隨機消耗 1 個並重新開始冒險事件。", description: "迷路了也用不了的爛東西，但關鍵時刻能救你一命。" },
     ],
   },
   {
-    id: "drops", number: "04", code: "MONSTER DROPS", title: "怪物掉落",
+    id: "drops", number: "04", code: "MONSTER DROPS", title: "怪物掉落物",
     note: "由城外特定怪物掉落的收藏品與禮物。",
     items: [
       { code: "SnakeFlower", name: "蛇之花", effect: "梅杜莎族花，與梅杜莎的恐怖外表不同，長得相當甜美漂亮。據說是某些藥水的藥材之一，收集難度較高，藥水鋪長期收集中。" },
@@ -96,7 +96,7 @@ export const itemCategories: ItemCategory[] = [
     id: "special", number: "06", code: "SPECIAL & LIMITED", title: "特殊／限時物品",
     note: "具有特殊取得條件、有效期限或可疊加效果的物品。",
     items: [
-      { code: "LuxuryPerfume", name: "精緻香水", effect: "意外的女性們都會喜歡的味道。" },
+      { code: "LuxuryPerfume", name: "精緻香水", effect: "城內流行的香水品牌，女性們都相當喜歡。贈送給酒館小姊姊的話可以獲得不少好感度……？" },
       { code: "RoyalCharm", name: "國主護符", effect: "打怪失敗率降低 10%，持有 1 個月後自動失效並刪除，可疊加。" },
       { code: "RoyalPermit", name: "皇家特許令", effect: "國內工作給的修羅國幣 +10%，持有 1 個月後自動失效並刪除，可疊加。" },
     ],

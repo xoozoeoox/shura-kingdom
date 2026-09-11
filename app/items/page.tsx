@@ -38,7 +38,7 @@ export default function ItemArchivePage() {
               {category.id === "stamina" ? <>
                 <ItemList title="藥水、精華與靈藥" code="POTIONS & ELIXIRS" category={category.id} items={category.items.filter((item) => !isCharacterGift(item.code))} />
                 <ItemList title="小姊姊的贈禮" code="CHARACTER GIFTS" category={category.id} items={category.items.filter((item) => isCharacterGift(item.code))} tooltip />
-              </> : category.id === "general" ? <SynthesisList items={category.items} /> : <ItemList category={category.id} items={category.items} expanded />}
+              </> : category.id === "general" ? <SynthesisList items={category.items} /> : <ItemList category={category.id} items={category.items} expanded tooltip={category.id === "adventure"} />}
             </div>
           </section>
         ))}
@@ -72,5 +72,5 @@ const synthesisGroups = [
 
 function SynthesisList({ items }: { items: (typeof itemCategories)[number]["items"] }) {
   const byCode = new Map(items.map((item) => [item.code, item]));
-  return <div className="synthesis-list"><header className="synthesis-labels"><span>合成素材 1</span><span>合成素材 2</span><span>成品</span></header>{synthesisGroups.map((group, row) => <div className="synthesis-row" key={group[2]}>{group.map((code, column) => { const item = byCode.get(code)!; return <article className={`synthesis-item${column === 2 ? " synthesis-result" : ""}`} data-reveal key={code}><span className="archive-item-icon"><ItemIcon code={item.code} category="general" /></span><div><small>{item.code}</small><h3>{item.name}</h3><p>{item.effect}</p></div></article>; })}</div>)}</div>;
+  return <div className="synthesis-list">{synthesisGroups.map((group) => <div className="synthesis-row" key={group[2]}>{group.map((code, column) => { const item = byCode.get(code)!; return <article className={`synthesis-item${column === 2 ? " synthesis-result" : ""}`} data-reveal key={code}><span className="archive-item-icon"><ItemIcon code={item.code} category="general" /></span><div><small>{item.code}</small><h3>{item.name}</h3><p>{item.effect}</p></div></article>; })}</div>)}</div>;
 }

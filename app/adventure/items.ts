@@ -1,4 +1,4 @@
-export const PAJAMAS_DESCRIPTION = '冒險遇到《強盜團事件》時可免疫偷錢一次，隨機消耗 1 個；若同時有睡衣與憑證，優先消耗睡衣。';
+export const PAJAMAS_DESCRIPTION = '冒險遇到《強盜團事件》時可免疫偷錢一次；若同時持有睡衣與憑證，優先消耗睡衣。';
 
 export const DROP_DESCRIPTIONS: Record<string, string> = {
   '山賊宏翰的睡衣': PAJAMAS_DESCRIPTION,
