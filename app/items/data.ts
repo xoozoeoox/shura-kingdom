@@ -2,6 +2,7 @@ export type ArchiveItem = {
   code: string;
   name: string;
   effect: string;
+  description?: string;
 };
 
 export type ItemCategory = {
@@ -27,11 +28,11 @@ export const itemCategories: ItemCategory[] = [
       { code: "potion_Ls", name: "普通英雄靈藥(大)", effect: "AP+100" },
       { code: "potion_Lm", name: "優良英雄靈藥(大)", effect: "AP+150" },
       { code: "potion_Ll", name: "精緻英雄靈藥(大)", effect: "AP+200" },
-      { code: "StrawberryNutritionTab", name: "草莓風味營養片", effect: "AP+60" },
-      { code: "FreshPuffBread", name: "現烤酥皮麵包", effect: "AP+60" },
-      { code: "NoYaTea", name: "特調提神午茶", effect: "AP+60" },
-      { code: "ElinLunch", name: "滿滿愛心便當", effect: "AP+60" },
-      { code: "HildaRation", name: "自製濃縮口糧", effect: "AP+80" },
+      { code: "StrawberryNutritionTab", name: "草莓風味營養片", effect: "AP+60", description: "米露贈送的禮物。帶著草莓甜香的小巧營養片，是她在藥草鋪幫忙時偷偷改良的隨身補給。" },
+      { code: "FreshPuffBread", name: "現烤酥皮麵包", effect: "AP+60", description: "莉莉安贈送的禮物。剛出爐的酥皮麵包層層鬆脆，仍留著酒館廚房裡溫暖的奶油香氣。" },
+      { code: "NoYaTea", name: "特調提神午茶", effect: "AP+60", description: "諾雅贈送的禮物。以她旅行途中蒐集的茶葉調製，沉穩香氣能讓疲憊的思緒重新清晰。" },
+      { code: "ElinLunch", name: "滿滿愛心便當", effect: "AP+60", description: "艾琳贈送的禮物。仔細裝滿家常料理的便當，每一道菜都藏著她溫柔而周到的心意。" },
+      { code: "HildaRation", name: "自製濃縮口糧", effect: "AP+80", description: "希爾妲贈送的禮物。依傭兵團配方壓製的高濃度口糧，外觀樸素，卻能迅速補足遠行所需的體力。" },
     ],
   },
   {

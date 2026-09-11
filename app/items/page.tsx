@@ -1,5 +1,7 @@
 import ScrollReveal from "../ScrollReveal";
 import { itemCategories, itemCount } from "./data";
+import CategoryIndex from "./CategoryIndex";
+import ItemIcon, { isCharacterGift } from "./ItemIcon";
 
 export const metadata = {
   title: "王國物品圖鑑｜修羅國系統導覽",
@@ -22,9 +24,7 @@ export default function ItemArchivePage() {
         <p>收錄目前王國登記在冊的 {itemCount} 種物品。效果、名稱與代碼均依現行系統資料整理。</p>
       </section>
 
-      <nav className="item-category-index" aria-label="物品分類快速導覽">
-        {itemCategories.map((category) => <a href={`#${category.id}`} key={category.id}><span>{category.number}</span>{category.title}<small>{category.items.length}</small></a>)}
-      </nav>
+      <CategoryIndex categories={itemCategories} />
 
       <div className="item-archive-content">
         {itemCategories.map((category) => (
@@ -34,14 +34,11 @@ export default function ItemArchivePage() {
               <h2 id={`${category.id}-title`}>{category.title}</h2>
               <p>{category.note}</p>
             </header>
-            <div className="item-card-grid">
-              {category.items.map((item, index) => (
-                <article className="archive-item-card" data-reveal style={{ transitionDelay: `${(index % 3) * 55}ms` }} key={item.code}>
-                  <span>{item.code}</span>
-                  <h3>{item.name}</h3>
-                  <p>{item.effect}</p>
-                </article>
-              ))}
+            <div className={`item-list-layout${category.id === "stamina" ? " stamina-list-layout" : ""}`}>
+              {category.id === "stamina" ? <>
+                <ItemList title="藥水、精華與靈藥" code="POTIONS & ELIXIRS" category={category.id} items={category.items.filter((item) => !isCharacterGift(item.code))} />
+                <ItemList title="小姊姊的贈禮" code="CHARACTER GIFTS" category={category.id} items={category.items.filter((item) => isCharacterGift(item.code))} />
+              </> : <ItemList category={category.id} items={category.items} />}
             </div>
           </section>
         ))}
@@ -50,4 +47,19 @@ export default function ItemArchivePage() {
       <footer><span>修羅國系統導覽　／　王國物品圖鑑</span><a href="/basic">返回基礎系統</a></footer>
     </main>
   );
+}
+
+function ItemList({ items, category, title, code }: { items: (typeof itemCategories)[number]["items"]; category: string; title?: string; code?: string }) {
+  return <div className="archive-item-list">
+    {title && <header className="archive-list-title"><b>{title}</b><small>{code}</small></header>}
+    {items.map((item, index) => {
+      const tooltip = item.description ?? item.effect;
+      const isRecovery = /^AP\+\d+$/.test(item.effect);
+      return <article className="archive-item-row" data-tooltip={tooltip} tabIndex={0} data-reveal style={{ transitionDelay: `${(index % 4) * 40}ms` }} key={item.code}>
+        <span className="archive-item-icon"><ItemIcon code={item.code} category={category} /></span>
+        <div className="archive-item-copy"><small>{item.code}</small><h3>{item.name}</h3></div>
+        <div className="archive-item-effect"><small>{isRecovery ? "RECOVERY" : "DETAIL"}</small><strong>{isRecovery ? item.effect : "查看"}</strong></div>
+      </article>;
+    })}
+  </div>;
 }
